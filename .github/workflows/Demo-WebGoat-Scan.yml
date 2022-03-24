@@ -1,0 +1,15 @@
+name: WebGoat-security-scan
+on:
+ push: 
+  branches: [ master ]
+ pull_request:
+  branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: OWASP ZAP Baseline Scan for WebGoat
+      uses: zaproxy/action-baseline@v0.3.0
+      with:
+        target: "http://10.10.1.13:8080/WebGoat"
